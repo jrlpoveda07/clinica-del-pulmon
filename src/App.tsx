@@ -471,6 +471,7 @@ const ServiceDetail = () => {
       color: "bg-blue-50 text-blue-600",
       image: "/neumologia%20pediadrica.jpeg",
       content: "Nuestra unidad de neumología pediátrica se especializa en el diagnóstico y tratamiento de enfermedades respiratorias en niños, desde recién nacidos hasta adolescentes. Entendemos que los niños no son adultos pequeños y requieren un enfoque especializado.",
+      contactLink: "tel:88863483",
       features: [
         "Control y manejo de Asma Infantil",
         "Tratamiento de Bronquiolitis y Bronquitis",
@@ -591,7 +592,7 @@ const ServiceDetail = () => {
               <h4 className="text-xl font-bold mb-2">¿Necesitas más información?</h4>
               <p className="text-blue-100 mb-6">Contáctanos directamente para resolver tus dudas sobre este servicio.</p>
               <a 
-                href="/#contacto" 
+                href={service.contactLink || "/#contacto"} 
                 className="inline-block bg-white text-clinic-blue px-8 py-3 rounded-xl font-bold hover:bg-blue-50 transition-colors"
               >
                 Contactar Ahora
