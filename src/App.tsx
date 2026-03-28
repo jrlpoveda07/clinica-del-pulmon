@@ -31,7 +31,9 @@ import {
   Pill,
   Smile,
   ArrowLeft,
-  CheckCircle2
+  CheckCircle2,
+  Apple,
+  MessageCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -151,7 +153,7 @@ const Hero = () => {
               Respirar bien es <span className="text-clinic-blue">vivir mejor</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
-              Brindamos atención personalizada en neumología pediátrica y de adultos. 
+              Brindamos atención personalizada en neumología pediátrica. 
               Cuidamos tus pulmones con tecnología moderna y la calidez que tú y tu familia merecen.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -166,18 +168,22 @@ const Hero = () => {
             
             <div className="mt-12 flex items-center gap-6">
               <div className="flex -space-x-3">
-                {['child1', 'child2', 'child3', 'child4'].map((seed, i) => (
-                  <img 
+                {[
+                  { icon: <Smile size={24} />, bg: "bg-blue-100 text-blue-600" },
+                  { icon: <Smile size={24} />, bg: "bg-pink-100 text-pink-600" },
+                  { icon: <Baby size={24} />, bg: "bg-green-100 text-green-600" },
+                  { icon: <Smile size={24} />, bg: "bg-purple-100 text-purple-600" }
+                ].map((item, i) => (
+                  <div 
                     key={i}
-                    src={`https://picsum.photos/seed/${seed}/100/100`} 
-                    alt="Paciente Infantil" 
-                    className="w-12 h-12 rounded-full border-4 border-white object-cover"
-                    referrerPolicy="no-referrer"
-                  />
+                    className={`w-12 h-12 rounded-full border-4 border-white flex items-center justify-center ${item.bg} shadow-sm`}
+                  >
+                    {item.icon}
+                  </div>
                 ))}
               </div>
               <div>
-                <p className="text-sm font-bold text-slate-900">+1,200 Niños Atendidos</p>
+                <p className="text-sm font-bold text-slate-900">+10 mil pacientes atendidos</p>
                 <p className="text-xs text-slate-500">Especialistas en pediatría</p>
               </div>
             </div>
@@ -247,6 +253,13 @@ const Services = () => {
       desc: "Venta de medicamentos especializados y atención farmacéutica profesional.",
       icon: <Pill className="w-8 h-8" />,
       color: "bg-purple-50 text-purple-600"
+    },
+    {
+      id: "gastroenterologia-nutricion",
+      title: "Gastroenterología y Nutrición Pediátrica",
+      desc: "Atención especializada en el sistema digestivo y nutrición para el desarrollo saludable de tus hijos.",
+      icon: <Apple className="w-8 h-8" />,
+      color: "bg-orange-50 text-orange-600"
     }
   ];
 
@@ -311,7 +324,7 @@ const About = () => {
               />
             </div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-clinic-blue rounded-full border-8 border-white flex items-center justify-center text-white shadow-xl">
-              <span className="text-2xl font-bold">15+</span>
+              <span className="text-2xl font-bold">20+</span>
               <span className="text-[10px] absolute bottom-6 uppercase tracking-widest font-bold">Años</span>
             </div>
           </div>
@@ -319,13 +332,13 @@ const About = () => {
           <div>
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Comprometidos con tu Bienestar Respiratorio</h2>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              Somos una clínica especializada en neumología y atención respiratoria pediátrica. Brindamos diagnóstico, tratamiento y seguimiento para niños y adultos con problemas pulmonares, ofreciendo una atención personalizada en un ambiente cómodo, seguro y profesional. Nuestro compromiso es cuidar la salud respiratoria de cada paciente con calidez, experiencia y tecnología moderna.
+              Somos una clínica especializada en neumología y atención respiratoria pediátrica. Brindamos diagnóstico, tratamiento y seguimiento para niños con problemas pulmonares, ofreciendo una atención personalizada en un ambiente cómodo, seguro y profesional. Nuestro compromiso es cuidar la salud respiratoria de cada paciente con calidez, experiencia y tecnología moderna.
             </p>
             
             <div className="space-y-6">
               {[
                 { title: "Atención Personalizada", desc: "Cada paciente recibe un plan de tratamiento único.", icon: <ShieldCheck className="text-clinic-blue" /> },
-                { title: "Ambiente Seguro", desc: "Instalaciones diseñadas para la comodidad de niños y adultos.", icon: <ShieldCheck className="text-clinic-blue" /> },
+                { title: "Ambiente Seguro", desc: "Instalaciones diseñadas para la comodidad de los niños.", icon: <ShieldCheck className="text-clinic-blue" /> },
                 { title: "Tecnología de Punta", desc: "Equipos modernos para diagnósticos precisos.", icon: <ShieldCheck className="text-clinic-blue" /> }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4">
@@ -356,34 +369,32 @@ const Contact = () => {
             </p>
 
             <div className="space-y-8">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0 mt-2">
                   <MapPin size={24} />
                 </div>
-                <div>
-                  <p className="font-bold">Dirección</p>
-                  <p className="text-blue-100">Nuevo HEODRA 150 mts al Norte, Léon</p>
+                <div className="flex-1">
+                  <p className="font-bold text-xl">Dirección</p>
+                  <p className="text-blue-100 mt-1">Del nuevo Hospital (HEODRA) 150 metros al norte, frente a Gasolinera UNO San Vicente, León, Nicaragua.</p>
                 </div>
               </div>
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0 mt-2">
                   <Phone size={24} />
                 </div>
-                <div>
-                  <p className="font-bold">Teléfono</p>
-                  <p className="text-blue-100">+505 88863483</p>
+                <div className="flex-1">
+                  <p className="font-bold text-xl">Teléfono</p>
+                  <p className="text-blue-100 mt-1">+505 88863483</p>
                 </div>
               </div>
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0 mt-2">
                   <Clock size={24} />
                 </div>
-                <div>
-                  <p className="font-bold">Horario</p>
+                <div className="flex-1">
+                  <p className="font-bold text-xl">Horario</p>
                   <div className="text-blue-100 text-sm mt-1 space-y-1">
-                    <p>Lun - Mié: 8:00 am a 5:00 pm</p>
-                    <p>Jueves: Cerrado</p>
-                    <p>Viernes: 8:00 am a 5:00 pm</p>
+                    <p>Lunes - Viernes: 8:00 am a 5:00 pm</p>
                     <p>Sábado: 8:00 am a 12:00 pm</p>
                     <p>Domingo: Cerrado</p>
                   </div>
@@ -435,17 +446,12 @@ const Footer = () => {
             </span>
           </div>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Facebook</a>
-            <a href="#" className="hover:text-white transition-colors">Instagram</a>
-            <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+            <a href="https://www.facebook.com/share/18C1MyAvqL/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a>
+            <a href="https://www.instagram.com/dra.urbina_neumologapediatra?utm_source=qr&igsh=MWxjaHVsZzltZWUwMA==" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+        <div className="flex justify-center items-center text-sm">
           <p>© 2026 Clínica del Pulmón. Todos los derechos reservados.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Política de Privacidad</a>
-            <a href="#" className="hover:text-white transition-colors">Términos de Servicio</a>
-          </div>
         </div>
       </div>
     </footer>
@@ -477,7 +483,8 @@ const ServiceDetail = () => {
         "Tratamiento de Bronquiolitis y Bronquitis",
         "Evaluación de Neumonías recurrentes",
         "Pruebas de función pulmonar pediátrica",
-        "Seguimiento de Fibrosis Quística"
+        "Seguimiento de Fibrosis Quística",
+        "Broncoscopia pediátrica"
       ]
     },
     "odontologia": {
@@ -487,12 +494,17 @@ const ServiceDetail = () => {
       color: "bg-red-50 text-red-600",
       image: "/odontologia.jpeg",
       content: "Ofrecemos servicios odontológicos integrales con un enfoque en la prevención y el cuidado delicado. Nuestro equipo está capacitado para atender a pacientes de todas las edades, asegurando una experiencia cómoda y sin estrés.",
+      contactLink: "tel:81266403",
       features: [
-        "Limpieza dental profunda y profilaxis",
-        "Odontopediatría especializada",
-        "Tratamiento de caries y restauraciones",
-        "Ortodoncia preventiva",
-        "Extracciones y cirugía menor"
+        "Odontología General",
+        "Implantes",
+        "Prótesis",
+        "Ortodoncia",
+        "Endodoncia",
+        "Cirugía Dental",
+        "Restauraciones",
+        "Blanqueamiento Dental",
+        "Implantología"
       ]
     },
     "laboratorio-clinico": {
@@ -502,12 +514,21 @@ const ServiceDetail = () => {
       color: "bg-green-50 text-green-600",
       image: "/servicio%20laboratorio.jpeg",
       content: "Contamos con tecnología de vanguardia para realizar una amplia gama de análisis clínicos. Nuestro laboratorio cumple con los más altos estándares de calidad para garantizar resultados confiables en el menor tiempo posible.",
+      contactLink: "tel:88288884",
       features: [
-        "Hematología y Bioquímica completa",
-        "Pruebas inmunológicas y hormonales",
-        "Exámenes de orina y coprológicos",
-        "Pruebas de alergias respiratorias",
-        "Servicio de toma de muestras a domicilio"
+        "Química Sanguínea",
+        "Hematologia",
+        "Inmunologia",
+        "Parasitologia",
+        "Pruebas especiales",
+        "Marcadores tumorales",
+        "Pruebas hormonales",
+        "Marcadores cardíacos",
+        "Pruebas infecciosas",
+        "Pruebas de covid",
+        "Pruebas de influenza",
+        "Panel alérgico pediátrico",
+        "Pruebas de tuberculosis"
       ]
     },
     "farmacia": {
@@ -517,12 +538,38 @@ const ServiceDetail = () => {
       color: "bg-purple-50 text-purple-600",
       image: "/farmacia.jpeg",
       content: "Nuestra farmacia interna ofrece una selección completa de medicamentos, con especial énfasis en tratamientos respiratorios. Brindamos asesoría profesional para asegurar el uso correcto de cada fármaco.",
+      contactLink: "tel:87167319",
       features: [
-        "Medicamentos especializados en neumología",
-        "Inhaladores y equipos de nebulización",
-        "Fórmulas magistrales",
-        "Atención farmacéutica personalizada",
-        "Programas de adherencia al tratamiento"
+        "Antialergénicos",
+        "Antiinflamatorios",
+        "Antibióticos",
+        "Nebulizadores",
+        "Aerocámaras",
+        "Inhaladores nasales",
+        "Inhaladores pulmonares",
+        "Jarabe para la tos y el resfriado",
+        "Oxímetros"
+      ]
+    },
+    "gastroenterologia-nutricion": {
+      title: "Gastroenterología y Nutrición Pediátrica",
+      subtitle: "Cuidando la digestión y el crecimiento de los más pequeños",
+      icon: <Apple className="w-12 h-12" />,
+      color: "bg-orange-50 text-orange-600",
+      image: "/Gastroenteorologia.png",
+      content: "Nuestra especialidad en Gastroenterología y Nutrición Pediátrica se enfoca en el diagnóstico y tratamiento de enfermedades del tracto gastrointestinal, hígado y páncreas en niños. Además, brindamos asesoría nutricional para asegurar un crecimiento y desarrollo óptimos.",
+      contactLink: "tel:84062741",
+      features: [
+        "Estreñimiento crónico",
+        "Enfermedades diarreicas",
+        "Dolor abdominal crónico",
+        "Gastropatías",
+        "Bajo peso y desnutrición",
+        "Alergias alimentarias",
+        "Enfermedades Inflamatorias Intestinales",
+        "Enfermedad Celíaca",
+        "Valoración Nutricional",
+        "Hepatopatías"
       ]
     }
   };
@@ -591,12 +638,22 @@ const ServiceDetail = () => {
             <div className="mt-8 bg-clinic-blue p-8 rounded-3xl text-white shadow-xl">
               <h4 className="text-xl font-bold mb-2">¿Necesitas más información?</h4>
               <p className="text-blue-100 mb-6">Contáctanos directamente para resolver tus dudas sobre este servicio.</p>
-              <a 
-                href={service.contactLink || "/#contacto"} 
-                className="inline-block bg-white text-clinic-blue px-8 py-3 rounded-xl font-bold hover:bg-blue-50 transition-colors"
-              >
-                Contactar Ahora
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a 
+                  href={service.contactLink || "/#contacto"} 
+                  className="flex items-center justify-center gap-2 bg-white text-clinic-blue px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-colors flex-1"
+                >
+                  <Phone size={20} /> Llamar
+                </a>
+                <a 
+                  href={service.contactLink ? `https://wa.me/505${service.contactLink.replace('tel:', '').replace(/\s+/g, '')}` : "/#contacto"} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#128C7E] transition-colors flex-1"
+                >
+                  <MessageCircle size={20} /> WhatsApp
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -611,7 +668,7 @@ const MedicalTeam = () => {
       name: "Dra. María Elena Urbina",
       specialty: "Neumóloga Pediatra",
       image: "/Dra. Maria Elenea Urbina.jpeg",
-      description: "Especialista en enfermedades respiratorias con más de 15 años de experiencia.",
+      description: "Especialista en enfermedades respiratorias con más de 20 años de experiencia.",
       imagePosition: "object-[center_40%]"
     },
     {
@@ -626,6 +683,13 @@ const MedicalTeam = () => {
       specialty: "Bioanalista Clínico",
       image: "/Dr. Alonso.jpeg",
       description: "Especialista en análisis clínicos y diagnóstico de laboratorio.",
+      imagePosition: "object-top"
+    },
+    {
+      name: "Dra. Hellen Flores González",
+      specialty: "Gastroenterología y Nutrición Pediátrica",
+      image: "/Dra. Hellen Flores Gonzalez .png",
+      description: "Especialista en el diagnóstico y tratamiento de enfermedades del sistema digestivo y nutrición en niños.",
       imagePosition: "object-top"
     }
   ];
