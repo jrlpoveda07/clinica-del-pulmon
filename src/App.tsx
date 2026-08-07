@@ -36,6 +36,7 @@ import {
   MessageCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 
 // --- Components ---
 
@@ -762,6 +763,7 @@ export default function App() {
           <Route path="/equipo-medico" element={<MedicalTeam />} />
         </Routes>
         <Footer />
+        <Analytics />
       </div>
     </BrowserRouter>
   );
